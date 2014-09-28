@@ -1,6 +1,6 @@
 
 
-\title{PhD research proposal\\ ``Hardware accelleration of micro-kernels for real-time applications''}
+\title{PhD research proposal\\ ``Hardware acceleration of micro-kernels for real-time applications''}
 \author{Alex Kroh \\ alex.kroh@nicta.com.au}
 \date{\today}
 
@@ -44,18 +44,18 @@ is pessimistic and leads to a dramatic underutilisation of processing resources.
 \\
 
 %\section{Method}
-Hardware accelleration of the core software architecture can not only improve the WCET, but it may
+Hardware acceleration of the core software architecture can not only improve the WCET, but it may
 also reduce the degree of pessimism in the estimated value and hence improve processor utilisation.
 
-With limited FPGA area, it would not be feasible to consider an enire software system as a candidate
-for hardware accelleration. The focus is hence limited to the accelleration of an Operating System (OS)
+With limited FPGA area, it would not be feasible to consider an entire software system as a candidate
+for hardware acceleration. The focus is hence limited to the acceleration of an Operating System (OS)
 micro kernel. The micro kernel software architecture traditionally provides a minimal set of core
 features while user level tasks are expected to provide OS services and driver support.
 
 The most frequent kernel invocations in a static system are caused by the scheduler and Inter Process
-Communication (IPC). We plan to begin the research by analysing the WCET benefits of accellerating these
+Communication (IPC). We plan to begin the research by analysing the WCET benefits of accelerating these
 features in programmable logic. With positive results, we plan to extend the scope of research to dynamic
-systems where resource creation and distruction must also be considered in the WCET estimate.
+systems where resource creation and destruction must also be considered in the WCET estimate.
 \\
 
 %\section{Outcomes}
