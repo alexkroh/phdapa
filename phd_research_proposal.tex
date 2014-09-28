@@ -25,38 +25,43 @@
 % the names of any academics you have contacted in the School
 % details of previous publications and/or research undertaken in your nominated area of interest
 
-\section{Introduction}
+
+%\section{Introduction}
 
 Safety critical embedded systems require a thorough analysis of Worst Case Execution Time (WCET)
-to ensure adherence to strict safety deadlines. Performance enhancement features of modern
+to ensure adherence to strict deadlines. Performance enhancement features of modern
 CPUs and cache warmth lead to non-determinism in execution time. For this reason, the WCET estimate
 is pessimistic and leads to a dramatic underutilisation of processing resources.
+\\
 
-Hardware accelleration of the core software architecture can not only improve the WCET, but it may
-also reduce the degree of pessimism in the estimated value and hence improve processor utilisation.
 
-\section{Related work}
+%\section{Related work}
 % Need to do a lit review of FPGA based OS and kernels
 % Anna @ NICTA has almost finished her 2nd year of her PhD which involves a software approach to
 % improving processor utilisation
 % Bernard blackham, recent PhD graduate at NICTA has critically evaluated the WCET of seL4
+<related work>
+\\
 
-\section{Method}
+%\section{Method}
+Hardware accelleration of the core software architecture can not only improve the WCET, but it may
+also reduce the degree of pessimism in the estimated value and hence improve processor utilisation.
+
 With limited FPGA area, it would not be feasible to consider an enire software system as a candidate
-for hardware accelleration. The focus is hence limited to the accelleration of an operating system
-kernel. The micro kernel software architecture is ideal for this research as it traditionally provides
-a minimal set of features while user level tasks are expected to provide extended features and drivers.
-An operating system kernel is responsible for the following administrative tasks:
+for hardware accelleration. The focus is hence limited to the accelleration of an Operating System (OS)
+micro kernel. The micro kernel software architecture traditionally provides a minimal set of core
+features while user level tasks are expected to provide OS services and driver support.
 
-The most frequent kernel invocation events are caused by scheduling threads and IPC. We plan to begin the
-research by analysing the benefits of accellerating these features in programmable logic.
+The most frequent kernel invocations in a static system are caused by the scheduler and Inter Process
+Communication (IPC). We plan to begin the research by analysing the WCET benefits of accellerating these
+features in programmable logic. With positive results, we plan to extend the scope of research to dynamic
+systems where resource creation and distruction must also be considered in the WCET estimate.
+\\
 
-\section{Outcomes}
-We can expect success in this research to reduce the financial and energy costs of a critical system by
+%\section{Outcomes}
+We can expect success in this research to reduce the monetary and energy costs of a critical system by
 allowing the system designer to scale back on the provisioned processing power. This research will also
 seed new research opportunities in the application of programmable logic to micro-kernel architectures.
-One such opportunity may be the hardening of the kernel to Single Event Upsets (SEUs) through custom
-Tripple Mudular Redundancy (TMR) circuits within the kernel.
 
 \end{document}
 
