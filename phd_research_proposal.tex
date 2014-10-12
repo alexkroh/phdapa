@@ -53,7 +53,7 @@ systems.
 %\section{Related word}
 Hardware acceleration of the core software architecture can not only improve the WCET of sequential
 programs \cite{warp, micro_hyp}, but it has also 
-been shown to reduce the degree of pessimism in WCET estimate \cite{aud_hardimp}.
+been shown to reduce the degree of pessimism in WCET estimation \cite{aud_hardimp}.
 With limited FPGA area, it may not be feasible to
 accelerate the entire software system. However, I am motivated to explore the impact of accelerating a
 core subset of the software system known as a micro-kernel. A micro-kernel traditionally provides a minimal
@@ -66,10 +66,11 @@ with WCET.
 %\section{Method}
 The most frequent kernel invocations in a static system are caused by the scheduler and Inter-Process
 Communication (IPC). I intend to begin my research by analysing the WCET benefits of accelerating these
-features in programmable logic. This will initially be done through simulation and a critical analysis
-of WCET. With positive results, I plan to extend the scope of research to dynamic systems where resource
-creation and destruction must also be considered in the WCET estimate. Finally, I am interested in
-producing a physical demonstration to prove my concept in a real world scenario.
+features in programmable logic. The evaluation will initially be conducted through simulation and a
+critical analysis of WCET. With positive results, I plan to extend the scope of research to dynamic
+systems where resource creation and destruction must also be considered in the WCET estimate. Finally,
+I look forward to migrating my concept to a physical safety critical system for evaluation in a real
+world context.
 
 %\section{Outcomes}
 We can expect success in this research to reduce the cost, weight and energy requirements of critical
