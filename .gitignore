@@ -3,3 +3,6 @@
 *.pdf
 *.swp
 *.swo
+*.bbl
+*.blg
+*.dvi

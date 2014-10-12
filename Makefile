@@ -5,8 +5,9 @@ TARGET=$(SRC:.tex=.pdf)
 
 default: $(TARGET)
 
+%.pdf: %.bib
 %.pdf: %.tex
-	@pdflatex $^ || \
+	@pdflatex $^ && bibtex phd_research_proposal && pdflatex $^ && pdflatex $^ || \
         (\
             echo "*********************"; \
             echo "****** FAILED *******"; \

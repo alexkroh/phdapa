@@ -2,11 +2,18 @@
 
 \title{PhD research proposal\\ ``Hardware acceleration of micro-kernels for real-time applications''}
 \author{Alex Kroh \\ alex.kroh@nicta.com.au}
+
+\author{\begin{tabular}{r@{ }l} 
+Candidate:      & Alexander Kroh \\[1ex] 
+Supervisors: & Oliver Diessel \\
+             & Gernot Heiser
+\end{tabular}}
 \date{\today}
 
 \documentclass[10pt]{article}
 
-\addtolength{\textheight}{2cm}
+\addtolength{\textheight}{4cm}
+\addtolength{\topmargin}{-2cm}
 
 \begin{document}
 \maketitle
@@ -16,6 +23,9 @@
 % * Why are these important?
 % * What other work has been done in the area?
 % * What is your plan of attack?
+%     Can you give us a hunch of what you might expect?
+%     How will the research proceed? e.g. build a model to identify applicable operating points; 
+%     implement & tests using the relatively recent generation of tightly-coupled CPU-FPGA systems
 % * What do you expect the outcomes of your research to be?
 
 % Web:
@@ -26,42 +36,50 @@
 % details of previous publications and/or research undertaken in your nominated area of interest
 
 
+% more energetic/focused treatment
+%\cite{aud_prefetch}
+% \cite{aud_ada}
+% \cite{luppold}
 %\section{Introduction}
+Safety critical embedded systems, such as automotive air bag and braking systems, require a thorough
+analysis of Worst Case Execution Time (WCET) to ensure adherence to strict timing requirements.
+Performance enhancement features of modern CPUs and cache warmth lead to non-determinism in execution
+time and result in a pessimistic estimate for WCET. The system engineer must over provision processing
+resources to ensure that, in the unlikely event that the WCET is ever observed, the system will still
+have sufficient processing resources to meet timing requirements and operate in a safe manner. For
+this reason, processing resources are typically dramatically underutilised in safety critical embedded
+systems.
 
-Safety critical embedded systems require a thorough analysis of Worst Case Execution Time (WCET)
-to ensure adherence to strict deadlines. Performance enhancement features of modern
-CPUs and cache warmth lead to non-determinism in execution time. For this reason, the WCET estimate
-is pessimistic and leads to a dramatic underutilisation of processing resources.
-\\
-
-
-%\section{Related work}
-% Need to do a lit review of FPGA based OS and kernels
-% Anna @ NICTA has almost finished her 2nd year of her PhD which involves a software approach to
-% improving processor utilisation
-% Bernard blackham, recent PhD graduate at NICTA has critically evaluated the WCET of seL4
-<related work>
-\\
+%\section{Related word}
+Hardware acceleration of the core software architecture can not only improve the WCET of sequential
+programs \cite{warp, micro_hyp}, but it has also 
+been shown to reduce the degree of pessimism in WCET estimate \cite{aud_hardimp}.
+With limited FPGA area, it may not be feasible to
+accelerate the entire software system. However, I am motivated to explore the impact of accelerating a
+core subset of the software system known as a micro-kernel. A micro-kernel traditionally provides a minimal
+set of abstract features for resource management and access control while high level services, such as
+device drivers and mission control systems, are provided by application software.
+By the 90/10 rule, the kernel is not usually a candidate for hardware acceleration, but, because all
+system events result in the invocation of kernel services, kernel performance has a strong correlation
+with WCET.
 
 %\section{Method}
-Hardware acceleration of the core software architecture can not only improve the WCET, but it may
-also reduce the degree of pessimism in the estimated value and hence improve processor utilisation.
-
-With limited FPGA area, it would not be feasible to consider an entire software system as a candidate
-for hardware acceleration. The focus is hence limited to the acceleration of an Operating System (OS)
-micro kernel. The micro kernel software architecture traditionally provides a minimal set of core
-features while user level tasks are expected to provide OS services and driver support.
-
-The most frequent kernel invocations in a static system are caused by the scheduler and Inter Process
-Communication (IPC). We plan to begin the research by analysing the WCET benefits of accelerating these
-features in programmable logic. With positive results, we plan to extend the scope of research to dynamic
-systems where resource creation and destruction must also be considered in the WCET estimate.
-\\
+The most frequent kernel invocations in a static system are caused by the scheduler and Inter-Process
+Communication (IPC). I intend to begin my research by analysing the WCET benefits of accelerating these
+features in programmable logic. This will initially be done through simulation and a critical analysis
+of WCET. With positive results, I plan to extend the scope of research to dynamic systems where resource
+creation and destruction must also be considered in the WCET estimate. Finally, I am interested in
+producing a physical demonstration to prove my concept in a real world scenario.
 
 %\section{Outcomes}
-We can expect success in this research to reduce the monetary and energy costs of a critical system by
-allowing the system designer to scale back on the provisioned processing power. This research will also
-seed new research opportunities in the application of programmable logic to micro-kernel architectures.
+We can expect success in this research to reduce the cost, weight and energy requirements of critical
+systems by improving the utilisation of processing resources. We can also expect a global improvement
+in critical system safety through simplified WCET analysis. This research may also seed new research
+opportunities in the application of programmable logic support for micro-kernel architectures.
 
+
+\bibliography{phd_research_proposal}
+%\bibliographystyle{apalike}
+\bibliographystyle{unsrt}
 \end{document}
 
