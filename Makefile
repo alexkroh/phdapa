@@ -14,3 +14,8 @@ default: $(TARGET)
             echo "*********************"; \
         )
         
+literature_review.pdf: literature_review.tex
+	@pdflatex $^
+	@bibtex literature_review
+	@pdflatex $^
+	@pdflatex $^

@@ -1,0 +1,69 @@
+
+\title{PhD Literature review}
+\author{Alex Kroh \\ alex.kroh@nicta.com.au}
+\date{\today}
+
+\documentclass[10pt]{article}
+
+\addtolength{\textheight}{4cm}
+\addtolength{\topmargin}{-2cm}
+
+\begin{document}
+\maketitle
+
+
+
+
+\section{Hardware Compilation of Sequential Ada}\label{sec:aud_ada}
+\cite{aud_ada}. The context of this paper is the use of hardware acceleration for improving WCET of real-time systems.
+The authors mention a lack of real-time aware programming languages for FPGA. They produce a tool which
+automatically compiles Ada, a real-time aware, sequential language, to VHDL. Parallelism is achieved
+by first converting the Ada program into a data flow graph such that data dependencies can be identified.
+
+The authors show promising results and comment that the relative WCET could even be improved with
+larger systems (ie, where where the opportunity for parallelism is increased).
+
+\section{Hardware implementation of programming languages for real-time}
+\cite{aud_hardimp}. This paper is a follow on from Paper~\ref{sec:aud_ada}.
+
+
+\section{WCET Preserving Hardware Prefetch for Many-Core Real-Time Systems}
+(Not read yet) \cite{aud_prefetch}.
+%TOREAD
+
+\section{Warp Processing: Dynamic Translation of Binaries to FPGA Circuits}
+\cite{warp}. The authors develop a run-time tool for profiling an application to identify hotspots and synthesises them
+to hardware on the fly. The results are very impressive but the overhead in synthesis limits the applicability
+of their work to long running CPU intensive tasks such as the processing of scientific data.
+
+It would have been nice to see the relationship between speed-up and algorithm run time to evaluate the
+cost of running their tool. They claim that the application never experiences a slow-down because they
+opt-out of acceleration if there would be no improvement, however, the application has already had
+to compete with their tool for CPU time.
+
+\section{A New Concept for System-level Design of Runtime Reconfigurable Real-time Systems}
+\cite{luppold}. This is a preliminary design paper which presents a novel approach to heterogeneous real-time system design.
+Subsystems are compiled for each processing resource (CPU, GPU, FPGA) and a resource manager is deployed to
+dynamically transition tasks between resources while ensuring that real-time requirements are met. An example
+case may be a hard real-time task which is exceeding its average execution time on the current resource and
+may need to be switched to the GPU or FPGA to accelerate execution.
+
+\section{Microkernel hypervisor for a hybrid ARM-FPGA platform}
+\cite{micro_hyp}. The authors develop a hybrid system which schedules both software and hardware ``tasks'' and is also
+capable of running Linux within a VM. The concept is great, but they did not get to the stage of running Linux. Their
+scheduling examples, a simple DSP circuit and a Matrix manipulation, were incredibly trivial and I believe that all
+of the interesting scheduling problems would have been missed. Both examples could clearly fit in the PL at the same
+time and would not need to be scheduled. It was also not clear whether hardware tasks could be scheduled in parallel
+with software tasks. Neither was it clear whether the hardware tasks were independent or if they required a monitor task
+in software.
+
+%FLAG 
+I would be interested to see where the authors future work leads with this concept.
+
+
+
+\bibliography{literature_review}
+%\bibliographystyle{apalike}
+\bibliographystyle{apalike}
+\end{document}
+
